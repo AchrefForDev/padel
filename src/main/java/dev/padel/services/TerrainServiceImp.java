@@ -30,6 +30,7 @@ public class TerrainServiceImp implements ITerrainService {
         terrainExistant.setDateouverture(t.getDateouverture());
         terrainExistant.setDatefermeture(t.getDatefermeture());
         terrainExistant.setCreneau(t.getCreneau());
+        terrainExistant.setPrixheure(t.getPrixheure());
         return terrainRepository.save(terrainExistant);
     }
 

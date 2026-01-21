@@ -27,6 +27,8 @@ public class Terrain {
     private LocalTime dateouverture;
     private LocalTime datefermeture;
 
+    private double prixheure;
+
     @OneToMany(mappedBy = "terrain", cascade = CascadeType.ALL)
     private List<Creneau> creneau ;
 

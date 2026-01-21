@@ -22,6 +22,8 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private StatutReservation statut = StatutReservation.EN_ATTENTE;
 
+    private double prixAPayer;
+
     @ManyToOne
     @JoinColumn(name = "utilisateur_id")
     private User utilisateur;
@@ -29,4 +31,10 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "creneau_id")
     private Creneau creneau;
+
+    public void calculerPrixAPayer() {
+        if (creneau != null) {
+            this.prixAPayer = creneau.getPrix();
+        }
+    }
 }
