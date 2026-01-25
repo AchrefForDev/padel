@@ -24,7 +24,7 @@ public class CreneauController {
     }
 
     @PostMapping("/aadcreneau")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Creneau create(@RequestBody Creneau creneau) {
         return creneauService.createCreneau(creneau);
     }

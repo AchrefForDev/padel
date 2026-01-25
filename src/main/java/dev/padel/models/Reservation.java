@@ -1,16 +1,15 @@
 package dev.padel.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name = "reservations")
 public class Reservation {
     @Id
@@ -36,5 +35,53 @@ public class Reservation {
         if (creneau != null) {
             this.prixAPayer = creneau.getPrix();
         }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDateReservation() {
+        return dateReservation;
+    }
+
+    public void setDateReservation(LocalDateTime dateReservation) {
+        this.dateReservation = dateReservation;
+    }
+
+    public StatutReservation getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutReservation statut) {
+        this.statut = statut;
+    }
+
+    public double getPrixAPayer() {
+        return prixAPayer;
+    }
+
+    public void setPrixAPayer(double prixAPayer) {
+        this.prixAPayer = prixAPayer;
+    }
+
+    public User getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(User utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public Creneau getCreneau() {
+        return creneau;
+    }
+
+    public void setCreneau(Creneau creneau) {
+        this.creneau = creneau;
     }
 }

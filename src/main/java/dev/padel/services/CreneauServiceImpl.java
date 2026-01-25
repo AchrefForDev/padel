@@ -33,15 +33,21 @@ public class CreneauServiceImpl implements ICreneauService{
 
     @Override
     public Creneau createCreneau(Creneau creneau) {
+        System.out.println("DEBUG: Entrée dans createCreneau");
+        System.out.println("DEBUG: Creneau reçu = " + creneau);
         Terrain terrain = terrainRepository.findById(creneau.getTerrain().getIdTerrain())
                 .orElseThrow(() -> new RuntimeException("Terrain introuvable"));
+        System.out.println("DEBUG: Terrain trouvé = " + terrain);
         LocalTime ouverture = terrain.getDateouverture();
         LocalTime fermeture = terrain.getDatefermeture();
+        System.out.println("DEBUG: Heures ouverture = " + ouverture + ", fermeture = " + fermeture);
         if (creneau.getHeureDebut().isBefore(ouverture) || creneau.getHeureFin().isAfter(fermeture)) {
             throw new RuntimeException("Heures invalides : en dehors des heures d’ouverture du terrain !");
         }
         creneau.setTerrain(terrain);
+
         creneau.calculerPrix();
+        System.out.println("DEBUG: Prix calculé = " + creneau.getPrix());
         return creneauRepository.save(creneau);
     }
 
